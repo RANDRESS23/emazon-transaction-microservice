@@ -55,7 +55,7 @@ public class BeanConfiguration {
 
     @Bean
     public ISupplyServicePort supplyServicePort() {
-        return new SupplyUseCase(supplyPersistencePort(), statePersistencePort(), authPersistencePort(), stockPersistencePort(), validationFailureMessage());
+        return new SupplyUseCase(supplyPersistencePort(), stateServicePort(), authPersistencePort(), stockPersistencePort(), validationFailureMessage());
     }
 
     @Bean
