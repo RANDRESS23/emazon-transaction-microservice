@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = Constants.STOCK_SERVICE_NAME, url = Constants.STOCK_SERVICE_URL, configuration = FeignClientInterceptor.class)
 public interface IStockFeignClient {
     @PatchMapping("/update-quantity")
-    public ResponseEntity<Void> updateProductQuantity(@RequestBody AddSupplyRequest request);
+    ResponseEntity<Void> updateProductQuantity(@RequestBody AddSupplyRequest request);
 }
