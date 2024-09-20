@@ -45,4 +45,9 @@ public class SupplyUseCase implements ISupplyServicePort {
             return supplyPersistencePort.updateSupplyState(supplySaved.getSupplyId(), rejectState, failureMessage);
         }
     }
+
+    @Override
+    public Supply getLastSupplyByProductId(Long productId) {
+        return supplyPersistencePort.getLastSupplyByProductId(productId).orElse(null);
+    }
 }

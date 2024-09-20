@@ -22,4 +22,6 @@ public class DrivenConstants {
     public static final String SUPPLY_NOT_FOUND = "Supply not found";
 
     public static final String AUTHORIZATION_HEADER  = "Authorization";
+
+    public static final String PARAM_SUPPLY_PRODUCT_ID = "productId";
 }

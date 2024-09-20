@@ -12,6 +12,8 @@ import com.emazon.microservicio_transaccion.domain.model.Supply;
 import com.emazon.microservicio_transaccion.domain.spi.ISupplyPersistencePort;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 public class SupplyAdapter implements ISupplyPersistencePort {
     private final ISupplyRepository supplyRepository;
@@ -35,5 +37,11 @@ public class SupplyAdapter implements ISupplyPersistencePort {
 
         SupplyEntity supplyEntityUpdated = supplyRepository.save(supplyEntity);
         return ISupplyEntityMapper.toDomainModel(supplyEntityUpdated, stateEntityMapper);
+    }
+
+    @Override
+    public Optional<Supply> getLastSupplyByProductId(Long productId) {
+        return supplyRepository.findLastSupplyByProductId(productId)
+                .map(supplyEntity -> ISupplyEntityMapper.toDomainModel(supplyEntity, stateEntityMapper));
     }
 }

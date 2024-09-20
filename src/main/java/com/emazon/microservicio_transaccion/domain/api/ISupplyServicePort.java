@@ -4,4 +4,5 @@ import com.emazon.microservicio_transaccion.domain.model.Supply;
 
 public interface ISupplyServicePort {
     Supply saveSupply(Supply supply);
+    Supply getLastSupplyByProductId(Long productId);
 }
