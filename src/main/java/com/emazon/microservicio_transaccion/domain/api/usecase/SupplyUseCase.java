@@ -38,7 +38,7 @@ public class SupplyUseCase implements ISupplyServicePort {
         Supply supplySaved = supplyPersistencePort.saveSupply(supply);
 
         try {
-            stockPersistencePort.updateProductQuantity(supplySaved.getProductId(), supplySaved.getExtraQuantity());
+            stockPersistencePort.updateProductQuantity(supplySaved.getProductId(), supplySaved.getExtraQuantity(), true);
             return supplyPersistencePort.updateSupplyState(supplySaved.getSupplyId(), approvedState, null);
         } catch (Exception e) {
             String failureMessage = validationFailureMessage.parseFailureMessage(e.getMessage());

@@ -10,8 +10,8 @@ public class StockAdapter implements IStockPersistencePort {
     private final IStockFeignClient stockFeignClient;
 
     @Override
-    public void updateProductQuantity(Long productId, Long extraQuantity) {
-        AddSupplyRequest request = new AddSupplyRequest(productId, extraQuantity);
+    public void updateProductQuantity(Long productId, Long quantity, boolean isAddProductQuantity) {
+        AddSupplyRequest request = new AddSupplyRequest(productId, quantity, isAddProductQuantity);
 
         stockFeignClient.updateProductQuantity(request);
     }

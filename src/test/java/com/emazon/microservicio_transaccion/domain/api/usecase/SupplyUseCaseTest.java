@@ -71,7 +71,7 @@ class SupplyUseCaseTest {
 
         // Assert
         assertEquals(supply, result);
-        verify(stockPersistencePort, times(1)).updateProductQuantity(supply.getProductId(), supply.getExtraQuantity());
+        verify(stockPersistencePort, times(1)).updateProductQuantity(supply.getProductId(), supply.getExtraQuantity(), true);
         verify(supplyPersistencePort, times(1)).updateSupplyState(supply.getSupplyId(), approvedState, null);
     }
 
@@ -96,7 +96,7 @@ class SupplyUseCaseTest {
         when(statePersistencePort.getStateByName(StateEnum.RECHAZADO)).thenReturn(Optional.of(rejectState));
         when(authPersistencePort.getAuthenticatedUserId()).thenReturn(auxBodegaId);
         when(supplyPersistencePort.saveSupply(supply)).thenReturn(supply);
-        doThrow(new RuntimeException("Stock update failed")).when(stockPersistencePort).updateProductQuantity(supply.getProductId(), supply.getExtraQuantity());
+        doThrow(new RuntimeException("Stock update failed")).when(stockPersistencePort).updateProductQuantity(supply.getProductId(), supply.getExtraQuantity(), true);
         when(validationFailureMessage.parseFailureMessage(anyString())).thenReturn(failureMessage);
         when(supplyPersistencePort.updateSupplyState(supply.getSupplyId(), rejectState, failureMessage)).thenReturn(supply);
 
@@ -105,7 +105,7 @@ class SupplyUseCaseTest {
 
         // Assert
         assertEquals(supply, result);
-        verify(stockPersistencePort, times(1)).updateProductQuantity(supply.getProductId(), supply.getExtraQuantity());
+        verify(stockPersistencePort, times(1)).updateProductQuantity(supply.getProductId(), supply.getExtraQuantity(), true);
         verify(supplyPersistencePort, times(1)).updateSupplyState(supply.getSupplyId(), rejectState, failureMessage);
     }
 }
