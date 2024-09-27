@@ -6,6 +6,7 @@ public class DrivingConstants {
     }
 
     public static final String HAS_ROLE_AUX_BODEGA_AND_ADMIN = "hasAnyRole('AUX_BODEGA', 'ADMIN')";
+    public static final String HAS_ROLE_CLIENT = "hasRole('CLIENTE')";
     public static final String SUPPLY_ID = "supplyId";
 
     public static final String RESPONSE_CODE_201="201";
@@ -24,4 +25,11 @@ public class DrivingConstants {
     public static final String GET_SUPPLY_RESPONSE_201_DESCRIPTION = "Supply retrieved successfully";
     public static final String GET_SUPPLY_RESPONSE_400_DESCRIPTION = "Invalid param";
     public static final String GET_SUPPLY_RESPONSE_404_DESCRIPTION = "Supply not found";
+
+    public static final String TAG_SALE_NAME = "Sale";
+    public static final String TAG_SALE_DESCRIPTION = "Sale API";
+    public static final String SAVE_SALE_SUMMARY = "Save a new sale";
+    public static final String SAVE_SALE_DESCRIPTION = "Creates a new sale in the database";
+    public static final String SAVE_SALE_RESPONSE_201_DESCRIPTION = "Sale created successfully";
+    public static final String SAVE_SALE_RESPONSE_400_DESCRIPTION = "Invalid input";
 }
