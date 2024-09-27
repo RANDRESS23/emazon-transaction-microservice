@@ -15,7 +15,7 @@ public interface ISupplyRequestMapper {
     static Supply addRequestToSupply(AddSupplyRequest addSupplyRequest) {
         return new Supply.SupplyBuilder()
                 .productId(addSupplyRequest.getProductId())
-                .extraQuantity(addSupplyRequest.getExtraQuantity())
+                .extraQuantity(addSupplyRequest.getQuantity())
                 .date(LocalDate.now())
                 .hour(LocalTime.now())
                 .build();
