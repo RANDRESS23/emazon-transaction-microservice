@@ -41,7 +41,8 @@ class SupplyRestControllerTest {
         // Arrange
         AddSupplyRequest addSupplyRequest = new AddSupplyRequest(
                 1L,
-                50L
+                50L,
+                true
         );
         State state = new State(1L, StateEnum.APROBADO);
         Supply supply = new Supply.SupplyBuilder()
