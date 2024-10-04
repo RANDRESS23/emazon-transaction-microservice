@@ -15,10 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/sale")
@@ -35,10 +32,22 @@ public class SaleRestController {
     })
     @PreAuthorize(DrivingConstants.HAS_ROLE_CLIENT)
     @PostMapping
-    public ResponseEntity<HttpStatus> addSale(@Valid @RequestBody AddSaleRequest request) {
+    public ResponseEntity<Long> addSale(@Valid @RequestBody AddSaleRequest request) {
         Sale sale = saleRequestMapper.addRequestToSale(request);
-        saleServicePort.saveSale(sale);
+        Long saleId = saleServicePort.saveSale(sale);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(saleId, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = DrivingConstants.DELETE_SALE_SUMMARY, description = DrivingConstants.DELETE_SALE_DESCRIPTION)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = DrivingConstants.RESPONSE_CODE_201, description = DrivingConstants.DELETE_SALE_RESPONSE_200_DESCRIPTION)
+    })
+    @PreAuthorize(DrivingConstants.HAS_ROLE_CLIENT)
+    @DeleteMapping
+    public ResponseEntity<HttpStatus> deleteSale(@Valid @RequestBody Long saleId) {
+        saleServicePort.deleteSale(saleId);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
