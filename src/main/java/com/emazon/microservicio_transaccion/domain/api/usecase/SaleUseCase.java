@@ -18,7 +18,7 @@ public class SaleUseCase implements ISaleServicePort {
     }
 
     @Override
-    public void saveSale(Sale sale) {
+    public Long saveSale(Sale sale) {
         Sale saleSaved = salePersistencePort.saveSale(sale);
         List<ProductSold> productsSold = sale.getProducts();
 
@@ -26,5 +26,13 @@ public class SaleUseCase implements ISaleServicePort {
             productSold.setSaleId(saleSaved.getSaleId());
             productSoldPersistencePort.saveProductSold(productSold);
         });
+
+        return saleSaved.getSaleId();
+    }
+
+    @Override
+    public void deleteSale(Long saleId) {
+        salePersistencePort.deleteSale(saleId);
+        productSoldPersistencePort.removeAllCartProductsSold(saleId);
     }
 }
