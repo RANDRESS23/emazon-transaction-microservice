@@ -7,5 +7,6 @@ import lombok.Getter;
 @Getter
 public class AddSupplyRequest {
     private final Long productId;
-    private final Long extraQuantity;
+    private final Long quantity;
+    private final Boolean isAddProductQuantity;
 }
