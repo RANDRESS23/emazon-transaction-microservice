@@ -4,4 +4,5 @@ import com.emazon.microservicio_transaccion.domain.model.ProductSold;
 
 public interface IProductSoldPersistencePort {
     void saveProductSold(ProductSold productSold);
+    void removeAllCartProductsSold(Long saleId);
 }
