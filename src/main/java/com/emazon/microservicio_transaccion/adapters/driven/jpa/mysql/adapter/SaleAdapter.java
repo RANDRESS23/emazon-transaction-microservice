@@ -19,4 +19,10 @@ public class SaleAdapter implements ISalePersistencePort {
         SaleEntity saleEntity = saleRepository.save(saleEntityMapper.toEntity(sale));
         return saleEntityMapper.toDomainModel(saleEntity);
     }
+
+    @Transactional
+    @Override
+    public void deleteSale(Long saleId) {
+        saleRepository.removeSale(saleId);
+    }
 }

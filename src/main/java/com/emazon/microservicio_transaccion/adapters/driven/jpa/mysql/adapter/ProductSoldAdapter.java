@@ -17,4 +17,10 @@ public class ProductSoldAdapter implements IProductSoldPersistencePort {
     public void saveProductSold(ProductSold productSold) {
         productSoldRepository.save(productSoldEntityMapper.toEntity(productSold));
     }
+
+    @Transactional
+    @Override
+    public void removeAllCartProductsSold(Long saleId) {
+        productSoldRepository.removeAllCartProductsSold(saleId);
+    }
 }
