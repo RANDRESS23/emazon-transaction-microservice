@@ -32,4 +32,8 @@ public class DrivingConstants {
     public static final String SAVE_SALE_DESCRIPTION = "Creates a new sale in the database";
     public static final String SAVE_SALE_RESPONSE_201_DESCRIPTION = "Sale created successfully";
     public static final String SAVE_SALE_RESPONSE_400_DESCRIPTION = "Invalid input";
+
+    public static final String DELETE_SALE_SUMMARY = "Sale a sale";
+    public static final String DELETE_SALE_DESCRIPTION = "Delete a sale in the database";
+    public static final String DELETE_SALE_RESPONSE_200_DESCRIPTION = "Sale removed successfully";
 }
